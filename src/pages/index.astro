@@ -1,11 +1,57 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import BarraSuperior from '../components/BarraSuperior.astro';
+import TarjetaMaterial from '../components/TarjetaMaterial.astro';
 import Layout from '../layouts/Layout.astro';
+import { obtenerMateriales, type Material } from '@/lib/materiales';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+let materiales: readonly Material[] = [];
+let errorConfiguracion: string | null = null;
+
+try {
+  materiales = obtenerMateriales();
+} catch (error) {
+  console.error('[materiales] materiales.json inválido:', error);
+  errorConfiguracion =
+    'Los materiales no están configurados correctamente. Avisa al equipo de Speak Easy.';
+}
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  titulo="Material de clases | Speak Easy"
+  descripcion="Descarga el material de las clases en vivo de Speak Easy."
+>
+  <BarraSuperior />
+
+  <main>
+    <div class="hero-materiales w-full">
+      <div
+        class="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-2 px-6 pt-10 pb-8 text-center lg:gap-3 lg:px-0 lg:pt-24 lg:pb-14"
+      >
+        <h1
+          class="text-[32px] leading-[40px] font-bold tracking-[-0.32px] text-balance text-morado-600 lg:max-w-[672px] lg:text-[48px] lg:leading-[48px] lg:tracking-[-0.48px]"
+        >
+          Tenemos un material para tí
+        </h1>
+        <p class="text-[18px] leading-[26px] text-balance text-texto">
+          Aquí tienes la Clase 1. Dale play y da tu primer paso para saber como aprender inglés.
+        </p>
+      </div>
+    </div>
+
+    <div class="mx-auto w-full max-w-[1200px] px-6 pt-8 pb-12 lg:px-0 lg:pt-14 lg:pb-24">
+      {
+        errorConfiguracion ? (
+          <p class="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-[18px] leading-[26px] text-amber-800">
+            {errorConfiguracion}
+          </p>
+        ) : (
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-6">
+            {materiales.map((material, indice) => (
+              <TarjetaMaterial material={material} prioritaria={indice < 3} />
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </main>
 </Layout>

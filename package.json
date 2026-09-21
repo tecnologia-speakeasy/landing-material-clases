@@ -9,12 +9,23 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "optimizar-imagenes": "node scripts/optimizar-imagenes.mjs"
   },
   "dependencies": {
-    "astro": "^7.3.3"
+    "@astrojs/vercel": "^11.0.10",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.1",
+    "tailwindcss": "^4.3.3",
+    "zod": "^4.5.4"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "sharp": "^0.35.4",
+    "typescript": "^6.0.3"
   }
 }

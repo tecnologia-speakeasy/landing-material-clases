@@ -1,23 +1,42 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  titulo: string;
+  descripcion?: string;
+  /** Color de la barra del navegador en móvil. */
+  colorTema?: string;
+}
+
+const {
+  titulo,
+  descripcion = 'Material de las clases en vivo de Speak Easy.',
+  colorTema = '#170b2b',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={descripcion} />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content={colorTema} />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/FAVICON.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/FAVICON.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!--
+      El subconjunto latin cubre el español; latin-ext solo entra si aparece
+      algún carácter raro, así que no hace falta precargarlo.
+    -->
+    <link rel="preload" as="font" type="font/woff2" href="/fuentes/inter-latin.woff2" crossorigin />
+
+    <title>{titulo}</title>
+  </head>
+  <body class="pagina-materiales font-inter min-h-dvh antialiased">
+    <slot />
+  </body>
+</html>

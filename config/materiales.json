@@ -1,0 +1,50 @@
+[
+  {
+    "id": "clase-1",
+    "titulo": "CLASE 01 - APRENDE INGLÉS CON FELIPE",
+    "descripcion": "Descarga el material de la clase de hoy aquí.",
+    "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%201%20SIN%20TITULO.jpg",
+    "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%201.pdf",
+    "disponible": true
+  },
+  {
+    "id": "clase-2",
+    "titulo": "CLASE 02 - APRENDE INGLÉS CON FELIPE",
+    "descripcion": "Descarga el material de la clase de hoy aquí.",
+    "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%202%20SIN%20TITULO.jpg",
+    "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%202.pdf",
+    "disponible": false
+  },
+  {
+    "id": "clase-3",
+    "titulo": "CLASE 03 - APRENDE INGLÉS CON FELIPE",
+    "descripcion": "Descarga el material de la clase de hoy aquí.",
+    "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%203%20SIN%20TITULO.jpg",
+    "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%203.pdf",
+    "disponible": false
+  },
+  {
+    "id": "clase-4",
+    "titulo": "CLASE 04 - APRENDE INGLÉS CON FELIPE",
+    "descripcion": "Descarga el material de la clase de hoy aquí.",
+    "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%204%20SIN%20TITULO.jpg",
+    "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%204.pdf",
+    "disponible": false
+  },
+  {
+    "id": "clase-5",
+    "titulo": "CLASE 05 - APRENDE INGLÉS CON FELIPE",
+    "descripcion": "Descarga el material de la clase de hoy aquí.",
+    "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%205%20SIN%20TITULO.jpg",
+    "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%205.pdf",
+    "disponible": false
+  },
+  {
+    "id": "clase-6",
+    "titulo": "CLASE 06 - APRENDE INGLÉS CON FELIPE",
+    "descripcion": "Descarga el material de la clase de hoy aquí.",
+    "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%206%20SIN%20TITULO.jpg",
+    "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%206.pdf",
+    "disponible": false
+  }
+]

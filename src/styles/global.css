@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+
+/* -----------------------------------------------------------------------------
+ * Fuente autoalojada (subconjuntos latin y latin-ext de Google Fonts).
+ * Va en /public/fuentes para no depender de fonts.gstatic.com: ahorra dos
+ * conexiones externas en la primera carga. Es variable, así que un solo archivo
+ * cubre todos los pesos que usa el diseño.
+ * ---------------------------------------------------------------------------*/
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fuentes/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fuentes/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* -----------------------------------------------------------------------------
+ * Tokens del diseño (Figma · CLASES-LANZAMIENTO → "Material de clase para YT").
+ * ---------------------------------------------------------------------------*/
+@theme {
+  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-rosa: #ff327d;
+  --color-morado-900: #170b2b;
+  --color-morado-600: #41276b;
+
+  --color-texto: #665c75;
+  --color-texto-fuerte: #331f52;
+  --color-borde: #e6e6e6;
+  /* Texto del botón bloqueado: gris sobre el mismo gris del borde. */
+  --color-boton-inactivo: #808080;
+}
+
+/* -----------------------------------------------------------------------------
+ * Fondo de la página: la trama del original, sobre blanco. El color plano de
+ * debajo evita el destello si la imagen todavía no ha cargado.
+ * ---------------------------------------------------------------------------*/
+.pagina-materiales {
+  background-color: #ffffff;
+  background-image: url('/design/originales/Material\ de\ clases\ -\ fondo\ movil.png');
+  background-position: top center;
+  background-size: 390px auto;
+  background-repeat: repeat;
+}
+
+@media (min-width: 768px) {
+  .pagina-materiales {
+    background-image: url('/design/originales/Material\ de\ clases\ -\ fondo\ desktop.png');
+    background-size: 911px 1024px;
+    background-position: top left;
+  }
+}
+
+/* Barra superior. */
+.barra-superior {
+  background-image: linear-gradient(97deg, rgb(23, 11, 43) 45.554%, rgb(65, 39, 107) 68.011%);
+}
+
+/* Franja del encabezado: separa la barra del listado con una sombra suave. */
+.hero-materiales {
+  background-color: rgba(255, 255, 255, 0.01);
+  box-shadow: 0 -9px 58.6px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Respeta a quien pide menos animación en el sistema. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
