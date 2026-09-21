@@ -1,15 +1,32 @@
 ---
-import { estaDisponible, type Material } from '@/lib/materiales';
+import {
+  aperturaDe,
+  estaDisponible,
+  formatearApertura,
+  type Material,
+} from '@/lib/materiales';
 
 interface Props {
   material: Material;
+  /** Instante único del render, compartido por todas las tarjetas. */
+  ahora: Date;
   /** Las primeras tarjetas cargan su miniatura de inmediato: están en el pliegue. */
   prioritaria?: boolean;
 }
 
-const { material, prioritaria = false } = Astro.props;
+const { material, ahora, prioritaria = false } = Astro.props;
 
-const descargable = estaDisponible(material);
+const descargable = estaDisponible(material, ahora);
+
+/**
+ * Solo tiene sentido anunciar la hora de apertura si es el reloj quien manda:
+ * con el interruptor manual puesto, o sin PDF configurado, la fecha no explica
+ * nada.
+ */
+const anuncioApertura =
+  !descargable && material.materialUrl !== undefined && material.disponible === undefined
+    ? `Disponible el ${formatearApertura(aperturaDe(material))}`
+    : 'Todavía no disponible';
 
 const boton =
   'flex h-12 w-full items-center justify-center rounded-full px-6 ' +
@@ -67,9 +84,9 @@ const botonBloqueado = 'cursor-not-allowed bg-borde text-boton-inactivo';
         </span>
       </a>
     ) : (
-      <span class:list={[boton, botonBloqueado]} aria-disabled="true">
+      <span class:list={[boton, botonBloqueado]} aria-disabled="true" title={anuncioApertura}>
         {material.textoBoton}
-        <span class="sr-only">— todavía no disponible</span>
+        <span class="sr-only">— {anuncioApertura}</span>
       </span>
     )
   }

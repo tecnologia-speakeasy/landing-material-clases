@@ -3,17 +3,20 @@ import materialesJson from '../../config/materiales.json';
 
 /**
  * El catálogo de materiales vive en `config/materiales.json`: es contenido
- * editable (títulos, miniaturas, PDF, qué material está abierto), no un
- * secreto, así que se versiona en git y cada cambio se revisa en el diff.
+ * editable (títulos, miniaturas, PDF, fecha de cada clase), no un secreto, así
+ * que se versiona en git y cada cambio se revisa en el diff.
  *
  * Va en `config/` y no en la raíz a propósito: un archivo suelto en la raíz
  * hace que el servidor de desarrollo de Vite resuelva una URL del mismo nombre
  * a ese archivo (le añade `.json` por su cuenta) y lo sirva en lugar de la
  * página.
  *
- * Se importa como módulo, así que entra en el bundle y la página se puede
- * generar estática: no hay lectura de disco en tiempo de ejecución.
+ * Se importa como módulo, así que entra en el bundle: no hay lectura de disco
+ * en tiempo de ejecución.
  */
+
+/** El material se abre este rato ANTES de que empiece la clase. */
+export const MINUTOS_ANTES = 30;
 
 /** Trata la cadena vacía como "no configurado" para que aplique `.optional()`. */
 const urlOpcional = z.preprocess(
@@ -37,10 +40,21 @@ const esquemaMaterial = z.object({
    */
   materialUrl: urlOpcional,
   /**
-   * `false` deja la tarjeta visible con el botón bloqueado, que es el estado
-   * gris del diseño. Por defecto los materiales están abiertos.
+   * Cuándo empieza la clase, en ISO 8601 **con la diferencia horaria escrita**
+   * (`-05:00` para Colombia, que no cambia de hora en todo el año). El offset
+   * es obligatorio a propósito: sin él, la fecha se interpretaría según el
+   * reloj del servidor que renderice, que en Vercel está en UTC.
    */
-  disponible: z.boolean().default(true),
+  fechaClase: z.iso.datetime({
+    offset: true,
+    message: 'fechaClase debe ser ISO 8601 con offset, por ejemplo 2026-10-05T19:00:00-05:00',
+  }),
+  /**
+   * Interruptor manual que gana sobre el horario, para emergencias: `true`
+   * abre el material aunque todavía no sea la hora y `false` lo cierra aunque
+   * ya haya pasado. Si se omite, manda el reloj.
+   */
+  disponible: z.boolean().optional(),
   /** Texto del botón. El diseño alterna "Descargar aquí" y "leer ahora". */
   textoBoton: z.string().min(1).default('Descargar aquí'),
 });
@@ -78,7 +92,51 @@ export function obtenerMateriales(): readonly Material[] {
   return cache;
 }
 
-/** Un material está descargable solo si está abierto y tiene PDF configurado. */
-export function estaDisponible(material: Material): boolean {
-  return material.disponible && material.materialUrl !== undefined;
+/** Momento exacto en que el material se abre: la hora de la clase menos el margen. */
+export function aperturaDe(material: Material): Date {
+  return new Date(new Date(material.fechaClase).getTime() - MINUTOS_ANTES * 60_000);
+}
+
+/**
+ * Un material es descargable si tiene PDF configurado y ya llegó su hora de
+ * apertura. Una vez abierto **no se vuelve a cerrar**: el estudiante que faltó
+ * a la clase sigue pudiendo descargar el material.
+ *
+ * `ahora` se pasa desde fuera para que todas las tarjetas de un mismo render
+ * compartan el mismo instante y no puedan contradecirse entre sí.
+ */
+export function estaDisponible(material: Material, ahora: Date): boolean {
+  if (material.materialUrl === undefined) return false;
+  if (material.disponible !== undefined) return material.disponible;
+  return ahora.getTime() >= aperturaDe(material).getTime();
+}
+
+/**
+ * La siguiente apertura pendiente, o `null` si ya no queda ninguna. La usan dos
+ * cosas: la cabecera `Cache-Control` de la página y el guion que recarga el
+ * navegador justo cuando toca.
+ *
+ * Los materiales con interruptor manual no cuentan: su estado no depende del
+ * reloj, así que no hay nada que esperar.
+ */
+export function proximaApertura(materiales: readonly Material[], ahora: Date): Date | null {
+  const pendientes = materiales
+    .filter((material) => material.materialUrl !== undefined && material.disponible === undefined)
+    .map((material) => aperturaDe(material))
+    .filter((apertura) => apertura.getTime() > ahora.getTime())
+    .sort((a, b) => a.getTime() - b.getTime());
+
+  return pendientes[0] ?? null;
+}
+
+/** "lunes 5 de octubre, 6:30 p. m." — para explicar cuándo se abre un material. */
+export function formatearApertura(apertura: Date): string {
+  return new Intl.DateTimeFormat('es-CO', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZone: 'America/Bogota',
+  }).format(apertura);
 }

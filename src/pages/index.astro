@@ -2,7 +2,7 @@
 import BarraSuperior from '../components/BarraSuperior.astro';
 import TarjetaMaterial from '../components/TarjetaMaterial.astro';
 import Layout from '../layouts/Layout.astro';
-import { obtenerMateriales, type Material } from '@/lib/materiales';
+import { obtenerMateriales, proximaApertura, type Material } from '@/lib/materiales';
 
 let materiales: readonly Material[] = [];
 let errorConfiguracion: string | null = null;
@@ -14,6 +14,28 @@ try {
   errorConfiguracion =
     'Los materiales no están configurados correctamente. Avisa al equipo de Speak Easy.';
 }
+
+/**
+ * Un único instante para todo el render: si cada tarjeta llamara a `new Date()`
+ * por su cuenta, dos podrían caer a lados distintos de la misma apertura.
+ */
+const ahora = new Date();
+const siguiente = proximaApertura(materiales, ahora);
+
+/**
+ * La página se sirve desde el CDN hasta la siguiente apertura y ni un segundo
+ * más, así que un lanzamiento con mucha gente a la vez no dispara una ejecución
+ * por visita, pero el botón se abre a su hora exacta. El tope de una hora es un
+ * seguro por si la próxima clase queda a días de distancia.
+ */
+const segundosHastaApertura = siguiente
+  ? Math.max(0, Math.ceil((siguiente.getTime() - ahora.getTime()) / 1000))
+  : Number.POSITIVE_INFINITY;
+
+Astro.response.headers.set(
+  'Cache-Control',
+  `public, max-age=0, s-maxage=${Math.min(segundosHastaApertura, 3600)}`,
+);
 ---
 
 <Layout
@@ -45,9 +67,12 @@ try {
             {errorConfiguracion}
           </p>
         ) : (
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-6">
+          <div
+            class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-6"
+            data-proxima-apertura={siguiente ? siguiente.getTime() : undefined}
+          >
             {materiales.map((material, indice) => (
-              <TarjetaMaterial material={material} prioritaria={indice < 3} />
+              <TarjetaMaterial material={material} ahora={ahora} prioritaria={indice < 3} />
             ))}
           </div>
         )
@@ -55,3 +80,27 @@ try {
     </div>
   </main>
 </Layout>
+
+<script>
+  /**
+   * Quien deje la página abierta esperando la clase ve el botón abrirse solo,
+   * sin tener que recargar. Quien la abra de nuevo recibe el estado correcto
+   * del servidor, así que esto es una comodidad, no la fuente de la verdad.
+   *
+   * El reloj del visitante puede estar mal, pero eso solo adelanta o atrasa una
+   * recarga: quien decide si el material está abierto sigue siendo el servidor.
+   */
+  const rejilla = document.querySelector<HTMLElement>('[data-proxima-apertura]');
+  const apertura = Number(rejilla?.dataset.proximaApertura);
+
+  if (Number.isFinite(apertura)) {
+    const espera = apertura - Date.now();
+    // `setTimeout` desborda pasados ~24,8 días, así que solo se arma si la
+    // apertura cae dentro del día. Un segundo de margen absorbe el desfase
+    // entre el reloj del navegador y el del servidor.
+    const UN_DIA = 24 * 60 * 60 * 1000;
+    if (espera > 0 && espera < UN_DIA) {
+      setTimeout(() => location.reload(), espera + 1000);
+    }
+  }
+</script>

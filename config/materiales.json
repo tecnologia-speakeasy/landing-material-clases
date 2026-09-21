@@ -5,7 +5,7 @@
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%201%20SIN%20TITULO.jpg",
     "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%201.pdf",
-    "disponible": true
+    "fechaClase": "2026-10-05T19:00:00-05:00"
   },
   {
     "id": "clase-2",
@@ -13,7 +13,7 @@
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%202%20SIN%20TITULO.jpg",
     "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%202.pdf",
-    "disponible": false
+    "fechaClase": "2026-10-06T19:00:00-05:00"
   },
   {
     "id": "clase-3",
@@ -21,7 +21,7 @@
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%203%20SIN%20TITULO.jpg",
     "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%203.pdf",
-    "disponible": false
+    "fechaClase": "2026-10-07T19:00:00-05:00"
   },
   {
     "id": "clase-4",
@@ -29,7 +29,7 @@
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%204%20SIN%20TITULO.jpg",
     "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%204.pdf",
-    "disponible": false
+    "fechaClase": "2026-10-08T19:00:00-05:00"
   },
   {
     "id": "clase-5",
@@ -37,7 +37,7 @@
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%205%20SIN%20TITULO.jpg",
     "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%205.pdf",
-    "disponible": false
+    "fechaClase": "2026-10-09T19:00:00-05:00"
   },
   {
     "id": "clase-6",
@@ -45,6 +45,6 @@
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Miniaturas%20clases/MINIATURA%20YT%20CLASE%206%20SIN%20TITULO.jpg",
     "materialUrl": "https://1igwvc1qrarpsgh9.public.blob.vercel-storage.com/Material%20clases/Clase%206.pdf",
-    "disponible": false
+    "fechaClase": "2026-10-10T19:00:00-05:00"
   }
 ]
