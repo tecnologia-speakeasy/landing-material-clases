@@ -18,10 +18,17 @@ import materialesJson from '../../config/materiales.json';
 /** El material se abre este rato ANTES de que empiece la clase. */
 export const MINUTOS_ANTES = 30;
 
+/**
+ * Ruta de un archivo de `public/` (`/miniaturas/clase-1.jpg`) o URL completa
+ * (`https://...`), por si algún recurso vuelve a vivir fuera del proyecto.
+ */
+const rutaOUrl = (mensaje: string) =>
+  z.union([z.string().regex(/^\/[^/]/, mensaje), z.url(mensaje)], { error: mensaje });
+
 /** Trata la cadena vacía como "no configurado" para que aplique `.optional()`. */
-const urlOpcional = z.preprocess(
+const rutaOUrlOpcional = z.preprocess(
   (valor) => (typeof valor === 'string' && valor.trim() === '' ? undefined : valor),
-  z.url().optional(),
+  rutaOUrl('materialUrl debe empezar por / (archivo de public/) o ser una URL completa').optional(),
 );
 
 const esquemaMaterial = z.object({
@@ -31,14 +38,14 @@ const esquemaMaterial = z.object({
     .regex(/^[a-z0-9-]+$/i, 'El id del material solo admite letras, números y guiones'),
   titulo: z.string().min(1),
   descripcion: z.string().optional(),
-  /** Miniatura de la clase (Vercel Blob). Es obligatoria: la tarjeta gira en torno a ella. */
-  miniaturaUrl: z.url('miniaturaUrl debe ser una URL completa (https://...)'),
+  /** Miniatura de la clase (`public/miniaturas/`). Es obligatoria: la tarjeta gira en torno a ella. */
+  miniaturaUrl: rutaOUrl('miniaturaUrl debe empezar por / (archivo de public/) o ser una URL completa'),
   /**
-   * PDF del material (Vercel Blob). Si falta, la tarjeta se ve igual pero con
-   * el botón en gris: sirve para anunciar una clase cuyo material todavía no
-   * está listo.
+   * PDF del material (`public/material/`). Si falta, la tarjeta se ve igual
+   * pero con el botón en gris: sirve para anunciar una clase cuyo material
+   * todavía no está listo.
    */
-  materialUrl: urlOpcional,
+  materialUrl: rutaOUrlOpcional,
   /**
    * Cuándo empieza la clase, en ISO 8601 **con la diferencia horaria escrita**
    * (`-05:00` para Colombia, que no cambia de hora en todo el año). El offset
