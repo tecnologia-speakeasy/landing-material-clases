@@ -1,49 +1,49 @@
 [
   {
     "id": "clase-1",
-    "titulo": "CLASE 01 - APRENDE INGLÉS CON FELIPE",
+    "titulo": "CLASE 01 - FUNDAMENTOS Y TERMINOLOGÍA DEL INGLÉS",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
-    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE1SINTITULO.jpg",
+    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE1.jpg",
     "materialUrl": "/material/material1.pdf",
     "fechaClase": "2026-10-05T19:00:00-05:00"
   },
   {
     "id": "clase-2",
-    "titulo": "CLASE 02 - APRENDE INGLÉS CON FELIPE",
+    "titulo": "CLASE 02 - TIPOS DE ACCIONES Y AUXILIARES",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
-    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE2SINTITULO.jpg",
+    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE2.jpg",
     "materialUrl": "/material/material2.pdf",
     "fechaClase": "2026-10-06T19:00:00-05:00"
   },
   {
     "id": "clase-3",
-    "titulo": "CLASE 03 - APRENDE INGLÉS CON FELIPE",
+    "titulo": "CLASE 03 - CÓMO CREAR UNA CONVERSACIÓN EN INGLÉS",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
-    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE3SINTITULO.jpg",
+    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE3.jpg",
     "materialUrl": "/material/material3.pdf",
     "fechaClase": "2026-10-07T19:00:00-05:00"
   },
   {
     "id": "clase-4",
-    "titulo": "CLASE 04 - APRENDE INGLÉS CON FELIPE",
+    "titulo": "CLASE 04 - VOCABULARIO BILINGÜE",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
-    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE4SINTITULO.jpg",
+    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE4.jpg",
     "materialUrl": "/material/material4.pdf",
     "fechaClase": "2026-10-08T19:00:00-05:00"
   },
   {
     "id": "clase-5",
-    "titulo": "CLASE 05 - APRENDE INGLÉS CON FELIPE",
+    "titulo": "CLASE 05 - FONÉTICA Y FONOLOGÍA DEL INGLÉS",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
-    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE5SINTITULO.jpg",
+    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE5.jpg",
     "materialUrl": "/material/material5.pdf",
     "fechaClase": "2026-10-09T19:00:00-05:00"
   },
   {
     "id": "clase-6",
-    "titulo": "CLASE 06 - APRENDE INGLÉS CON FELIPE",
+    "titulo": "CLASE 06 - ESTRUCTURACIÓN DEL APRENDIZAJE BILINGÜE",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
-    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE6SINTITULO.jpg",
+    "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE6.jpg",
     "materialUrl": "/material/material6.pdf",
     "fechaClase": "2026-10-10T19:00:00-05:00"
   }
