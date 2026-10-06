@@ -4,8 +4,9 @@
     "titulo": "CLASE 01 - FUNDAMENTOS Y TERMINOLOGÍA DEL INGLÉS",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE1.jpg",
-    "materialUrl": "/material/material1.pdf",
-    "fechaClase": "2026-10-05T19:00:00-05:00"
+    "materialUrl": "https://kajabi-storefronts-production.s3.amazonaws.com/file-uploads/sites/2148669590/files/cfd71c-b54e-13c2-740a-e5f68b124bf_01_CLASE_-_FUNDAMENTOS_Y_TERMINOLOGI_A_DEL_INGLE_S.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI4TIKYMSB4PQMFBA%2F20261006%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261006T011157Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=60ca9bef18536beccfce33369222dd8889450e223748401aec7be311915b5faf",
+    "fechaClase": "2026-10-05T19:00:00-05:00",
+    "disponible": true
   },
   {
     "id": "clase-2",
@@ -13,7 +14,8 @@
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE2.jpg",
     "materialUrl": "/material/material2.pdf",
-    "fechaClase": "2026-10-06T19:00:00-05:00"
+    "fechaClase": "2026-10-06T19:00:00-05:00",
+    "disponible": false
   },
   {
     "id": "clase-3",
@@ -21,7 +23,8 @@
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE3.jpg",
     "materialUrl": "/material/material3.pdf",
-    "fechaClase": "2026-10-07T19:00:00-05:00"
+    "fechaClase": "2026-10-07T19:00:00-05:00",
+    "disponible": false
   },
   {
     "id": "clase-4",
@@ -29,7 +32,8 @@
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE4.jpg",
     "materialUrl": "/material/material4.pdf",
-    "fechaClase": "2026-10-08T19:00:00-05:00"
+    "fechaClase": "2026-10-08T19:00:00-05:00",
+    "disponible": false
   },
   {
     "id": "clase-5",
@@ -37,7 +41,8 @@
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE5.jpg",
     "materialUrl": "/material/material5.pdf",
-    "fechaClase": "2026-10-09T19:00:00-05:00"
+    "fechaClase": "2026-10-09T19:00:00-05:00",
+    "disponible": false
   },
   {
     "id": "clase-6",
@@ -45,6 +50,7 @@
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "/miniaturas/MINIATURAYTCLASE6.jpg",
     "materialUrl": "/material/material6.pdf",
-    "fechaClase": "2026-10-10T19:00:00-05:00"
+    "fechaClase": "2026-10-10T19:00:00-05:00",
+    "disponible": false
   }
 ]

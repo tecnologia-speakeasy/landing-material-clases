@@ -15,8 +15,8 @@ import materialesJson from '../../config/materiales.json';
  * en tiempo de ejecución.
  */
 
-/** El material se abre este rato ANTES de que empiece la clase. */
-export const MINUTOS_ANTES = 30;
+/** El material se abre este rato DESPUÉS de que empiece la clase. */
+export const MINUTOS_DESPUES = 120;
 
 /**
  * Ruta de un archivo de `public/` (`/miniaturas/clase-1.jpg`) o URL completa
@@ -99,9 +99,9 @@ export function obtenerMateriales(): readonly Material[] {
   return cache;
 }
 
-/** Momento exacto en que el material se abre: la hora de la clase menos el margen. */
+/** Momento exacto en que el material se abre: la hora de la clase más el margen. */
 export function aperturaDe(material: Material): Date {
-  return new Date(new Date(material.fechaClase).getTime() - MINUTOS_ANTES * 60_000);
+  return new Date(new Date(material.fechaClase).getTime() + MINUTOS_DESPUES * 60_000);
 }
 
 /**
@@ -136,7 +136,7 @@ export function proximaApertura(materiales: readonly Material[], ahora: Date): D
   return pendientes[0] ?? null;
 }
 
-/** "lunes 5 de octubre, 6:30 p. m." — para explicar cuándo se abre un material. */
+/** "lunes 5 de octubre, 9:00 p. m." — para explicar cuándo se abre un material. */
 export function formatearApertura(apertura: Date): string {
   return new Intl.DateTimeFormat('es-CO', {
     weekday: 'long',

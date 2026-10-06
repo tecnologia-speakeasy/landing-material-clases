@@ -4,7 +4,7 @@ Página única y pública donde el estudiante descarga el PDF de cada clase del
 lanzamiento. Sin registro, sin sesión y sin base de datos: se entra por el
 enlace y se descarga.
 
-El material de cada clase **se abre solo**, 30 minutos antes de que empiece la
+El material de cada clase **se abre solo**, 2 horas después de que empiece la
 clase. No hay que desplegar nada para habilitarlo.
 
 - **Astro 7** renderizando en servidor (`output: 'server'`) desplegado en **Vercel**
@@ -37,21 +37,21 @@ clase. No hay que desplegar nada para habilitarlo.
 
 Las seis clases del lanzamiento van **del 5 al 10 de octubre de 2026**, todos
 los días a las **7:00 p. m. hora de Colombia**. El material de cada una se abre
-a las **6:30 p. m.**, media hora antes.
+a las **9:00 p. m.**, 2 horas después del inicio.
 
 | Clase | Día | Empieza | Material disponible desde |
 | --- | --- | --- | --- |
-| 1 | lunes 5 de octubre | 7:00 p. m. | 6:30 p. m. |
-| 2 | martes 6 de octubre | 7:00 p. m. | 6:30 p. m. |
-| 3 | miércoles 7 de octubre | 7:00 p. m. | 6:30 p. m. |
-| 4 | jueves 8 de octubre | 7:00 p. m. | 6:30 p. m. |
-| 5 | viernes 9 de octubre | 7:00 p. m. | 6:30 p. m. |
-| 6 | sábado 10 de octubre | 7:00 p. m. | 6:30 p. m. |
+| 1 | lunes 5 de octubre | 7:00 p. m. | 9:00 p. m. |
+| 2 | martes 6 de octubre | 7:00 p. m. | 9:00 p. m. |
+| 3 | miércoles 7 de octubre | 7:00 p. m. | 9:00 p. m. |
+| 4 | jueves 8 de octubre | 7:00 p. m. | 9:00 p. m. |
+| 5 | viernes 9 de octubre | 7:00 p. m. | 9:00 p. m. |
+| 6 | sábado 10 de octubre | 7:00 p. m. | 9:00 p. m. |
 
 Una vez abierto, un material **no se vuelve a cerrar**: quien faltó a la clase
 sigue pudiendo descargarlo.
 
-El margen de media hora es la constante `MINUTOS_ANTES` de
+El margen de 2 horas es la constante `MINUTOS_DESPUES` de
 [`src/lib/materiales.ts`](src/lib/materiales.ts). Cambiarla mueve la apertura de
 todas las clases a la vez.
 
@@ -121,7 +121,7 @@ Es un array de objetos con estos campos:
 | `id` | obligatorio | Identificador interno, sin espacios. Solo letras, números y guiones. |
 | `titulo` | obligatorio | Título visible de la tarjeta. |
 | `miniaturaUrl` | obligatorio | Imagen de la clase (Blob de Vercel), URL completa. |
-| `fechaClase` | obligatorio | Cuándo empieza la clase, ISO 8601 **con offset**: `2026-10-05T19:00:00-05:00`. El material se abre 30 minutos antes. |
+| `fechaClase` | obligatorio | Cuándo empieza la clase, ISO 8601 **con offset**: `2026-10-05T19:00:00-05:00`. El material se abre 2 horas después. |
 | `descripcion` | opcional | Texto corto bajo el título. |
 | `materialUrl` | opcional | PDF del material. Si falta, el botón sale bloqueado aunque ya sea la hora. |
 | `disponible` | opcional | **Interruptor de emergencia que gana sobre el reloj.** `true` abre el material ya mismo; `false` lo cierra aunque ya haya pasado su hora. Si se omite —lo normal— manda el horario. |
@@ -142,7 +142,7 @@ reloj, añade `disponible` a ese objeto y despliega:
 {
   "id": "clase-3",
   "fechaClase": "2026-10-07T19:00:00-05:00",
-  "disponible": true   // se abre ya, sin esperar a las 6:30 p. m.
+  "disponible": true   // se abre ya, sin esperar a las 9:00 p. m.
 }
 ```
 
@@ -217,10 +217,10 @@ mover las fechas a mano en `config/materiales.json` y recargar. Con
 
 1. **Material ya abierto:** pon una `fechaClase` de ayer en la clase 1 → el
    botón sale rosa y abre el PDF en una pestaña nueva.
-2. **Dentro de la ventana:** pon una `fechaClase` 20 minutos en el futuro → el
-   botón ya está abierto, porque faltan menos de 30 minutos.
-3. **Fuera de la ventana:** pon una `fechaClase` 40 minutos en el futuro → el
-   botón sigue gris. Pasa el ratón por encima y verás la hora exacta a la que se
+2. **Ya pasó la apertura:** pon una `fechaClase` de hace 2 horas y 10 minutos →
+   el botón ya está abierto, porque la apertura fue hace 10 minutos.
+3. **Clase en curso:** pon una `fechaClase` de hace 1 hora → el botón sigue
+   gris, porque todavía falta 1 hora para la apertura. Pasa el ratón por encima y verás la hora exacta a la que se
    abre.
 4. **El PDF no se filtra:** con el botón gris, busca `.pdf` en el código fuente
    de la página → no aparece. El `href` solo se escribe cuando el material está
