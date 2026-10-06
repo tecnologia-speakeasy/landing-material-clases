@@ -160,7 +160,7 @@ El diseño sale de la sección **"Material de clase para YT"** de Figma (archivo
 | Recurso | Dónde | Notas |
 | --- | --- | --- |
 | Fuente Inter | `public/fuentes/inter-latin*.woff2` | Subconjuntos latin y latin-ext. Es variable: un archivo cubre todos los pesos. Se precarga el subconjunto latin, que es el que cubre el español. |
-| Fondo de la página | `design/originales/*.png` | Los PNG sin optimizar, referenciados desde `global.css`; Vite los copia al build. En `public/img/` están los mismos fondos en WebP (75 kB frente a 1,4 MB), hoy sin usar. |
+| Fondo de la página | CDN de Kajabi | URL completas en `global.css`: una para móvil (390 px de ancho, en mosaico) y otra para desktop (960 × 1062). Los PNG antiguos de `design/originales/` y sus WebP de `public/img/` quedan sin usar. |
 | Logo de la barra | `public/img/logo-speakeasy-header.webp` | Generado desde `design/originales/`. |
 | Favicon | `public/FAVICON.png`, `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png` | |
 | Miniaturas y PDF | Blob de Vercel | Se configuran por material en `config/materiales.json`. |

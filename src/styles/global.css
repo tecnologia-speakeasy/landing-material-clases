@@ -50,7 +50,7 @@
  * ---------------------------------------------------------------------------*/
 .pagina-materiales {
   background-color: #ffffff;
-  background-image: url('/design/originales/Material\ de\ clases\ -\ fondo\ movil.png');
+  background-image: url('https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148669590/images/68cb527-127-d52c-512f-42e208c7b580_Listado_de_clases_-_fondo_Mo_vil.png');
   background-position: top center;
   background-size: 390px auto;
   background-repeat: repeat;
@@ -58,8 +58,8 @@
 
 @media (min-width: 768px) {
   .pagina-materiales {
-    background-image: url('/design/originales/Material\ de\ clases\ -\ fondo\ desktop.png');
-    background-size: 911px 1024px;
+    background-image: url('https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148669590/images/d2f6c0b-310-bf33-f884-8f05c023bf74_Listado_de_clases_-_fondo_desktop.png');
+    background-size: 960px 1062px;
     background-position: top left;
   }
 }
