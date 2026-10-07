@@ -13,9 +13,9 @@
     "titulo": "CLASE 02 - TIPOS DE ACCIONES Y AUXILIARES",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148669590/images/ba64c-304c-5cfd-a200-ff2608a2863e_MINIATURAYTCLASE2.jpg",
-    "materialUrl": "/material/material2.pdf",
+    "materialUrl": "https://kajabi-storefronts-production.s3.amazonaws.com/file-uploads/sites/2148669590/files/66c78d0-74b6-b64d-24c-7c8cc8ab3cf_02_CLASE_-_TIPOS_DE_ACCIONES_Y_SUS_AUXILIARES.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI4TIKYMSB4PQMFBA%2F20261007%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261007T004522Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=de6100a32e78c7d660face07c2edd1c5a9c6f23f79e6da8bbc3f92bb111616c8",
     "fechaClase": "2026-10-06T19:00:00-05:00",
-    "disponible": false
+    "disponible": true
   },
   {
     "id": "clase-3",
