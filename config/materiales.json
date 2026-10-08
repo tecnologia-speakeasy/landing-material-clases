@@ -22,9 +22,9 @@
     "titulo": "CLASE 03 - CÓMO CREAR UNA CONVERSACIÓN EN INGLÉS",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148669590/images/a16bae-ad53-7edb-686-c3301427435_MINIATURAYTCLASE3.jpg",
-    "materialUrl": "/material/material3.pdf",
+    "materialUrl": "https://kajabi-storefronts-production.s3.amazonaws.com/file-uploads/sites/2148669590/files/ba15c6-7201-b48-3dc-8427de671083_03_CLASE_-_CO_MO_CREAR_UNA_CONVERSACIO_N_EN_INGLE_S_.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI4TIKYMSB4PQMFBA%2F20261008%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261008T011040Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f572bc695adad6cc8266d6096f12fdb55ad7c7af3ecca609917a5b8ffc1a6826",
     "fechaClase": "2026-10-07T19:00:00-05:00",
-    "disponible": false
+    "disponible": true
   },
   {
     "id": "clase-4",
