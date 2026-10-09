@@ -31,9 +31,9 @@
     "titulo": "CLASE 04 - VOCABULARIO BILINGÜE",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148669590/images/3b7cc-581e-f6e7-60c2-edf643560a37_MINIATURAYTCLASE4.jpg",
-    "materialUrl": "/material/material4.pdf",
+    "materialUrl": "https://kajabi-storefronts-production.s3.amazonaws.com/file-uploads/sites/2148669590/files/ff04d7d-ebfa-a201-f188-5ccb1db6e68_04_CLASE_-_MATERIAL_DE_VOCABULARIO_PARA_COCINA.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI4TIKYMSB4PQMFBA%2F20261009%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261009T011712Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=55b9a4e705445b2b8e2ce33e4ed01d59574c37f65943e3320eb17cab3117c697",
     "fechaClase": "2026-10-08T19:00:00-05:00",
-    "disponible": false
+    "disponible": true
   },
   {
     "id": "clase-5",
