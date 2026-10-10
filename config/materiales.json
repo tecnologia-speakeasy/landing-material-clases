@@ -40,9 +40,9 @@
     "titulo": "CLASE 05 - FONÉTICA Y FONOLOGÍA DEL INGLÉS",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148669590/images/4aac0f-64e2-8f43-c3f5-d0067f1c2ec_MINIATURAYTCLASE5.jpg",
-    "materialUrl": "/material/material5.pdf",
+    "materialUrl": "https://kajabi-storefronts-production.s3.amazonaws.com/file-uploads/sites/2148669590/files/6335b4-b0ad-de1c-6576-76a7755186cb_05_CLASE_-_FONE_TICA_Y_FONOLOGI_A.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI4TIKYMSB4PQMFBA%2F20261010%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261010T005314Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=959d71e4714b1f424865f6ea0552e5a1d50edb195b3cc5612c8c7c0f4cc1ab3b",
     "fechaClase": "2026-10-09T19:00:00-05:00",
-    "disponible": false
+    "disponible": true
   },
   {
     "id": "clase-6",
