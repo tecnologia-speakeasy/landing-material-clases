@@ -64,9 +64,25 @@
   }
 }
 
-/* Barra superior. */
-.barra-superior {
-  background-image: linear-gradient(97deg, rgb(23, 11, 43) 45.554%, rgb(65, 39, 107) 68.011%);
+/* Banner del lanzamiento: el degradado lila de la página de venta. */
+.banner-lanzamiento {
+  background-image: linear-gradient(90deg, #c4a6e2 0%, #decaef 50%, #ece3f6 100%);
+  box-shadow: 0 4px 16px rgba(26, 8, 46, 0.18);
+}
+
+/*
+ * La cuenta atrás no se ve hasta que el guion pinta el tiempo real: así no
+ * asoma un instante en 00. Si el guion no llegara a correr, aparece a los 2 s.
+ */
+.cuenta-atras:not([data-lista]) {
+  visibility: hidden;
+  animation: mostrar-cuenta-atras 0s linear 2s forwards;
+}
+
+@keyframes mostrar-cuenta-atras {
+  to {
+    visibility: visible;
+  }
 }
 
 /* Franja del encabezado: separa la barra del listado con una sombra suave. */

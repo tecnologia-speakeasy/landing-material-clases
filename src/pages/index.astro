@@ -1,5 +1,5 @@
 ---
-import BarraSuperior from '../components/BarraSuperior.astro';
+import BannerLanzamiento from '../components/BannerLanzamiento.astro';
 import TarjetaMaterial from '../components/TarjetaMaterial.astro';
 import Layout from '../layouts/Layout.astro';
 import { obtenerMateriales, proximaApertura, type Material } from '@/lib/materiales';
@@ -42,7 +42,7 @@ Astro.response.headers.set(
   titulo="Material de clases | Speak Easy"
   descripcion="Descarga el material de las clases en vivo de Speak Easy."
 >
-  <BarraSuperior />
+  <BannerLanzamiento ahora={ahora} />
 
   <main>
     <div class="hero-materiales w-full">

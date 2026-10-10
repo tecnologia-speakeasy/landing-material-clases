@@ -96,7 +96,7 @@ design/originales/               Entregables de diseño sin optimizar
 src/lib/materiales.ts            Carga, validación (zod) y lógica de apertura
 src/layouts/Layout.astro         <head> común: favicon, precarga de fuente, fondo
 src/styles/global.css            Fuente autoalojada, tokens del diseño y fondo
-src/components/BarraSuperior.astro   Barra superior (solo el logo)
+src/components/BannerLanzamiento.astro Banner del lanzamiento: botón de compra y cuenta atrás
 src/components/TarjetaMaterial.astro Tarjeta de un material: miniatura, texto y botón
 src/pages/index.astro            La única página
 ```
@@ -161,7 +161,7 @@ El diseño sale de la sección **"Material de clase para YT"** de Figma (archivo
 | --- | --- | --- |
 | Fuente Inter | `public/fuentes/inter-latin*.woff2` | Subconjuntos latin y latin-ext. Es variable: un archivo cubre todos los pesos. Se precarga el subconjunto latin, que es el que cubre el español. |
 | Fondo de la página | CDN de Kajabi | URL completas en `global.css`: una para móvil (390 px de ancho, en mosaico) y otra para desktop (960 × 1062). Los PNG antiguos de `design/originales/` y sus WebP de `public/img/` quedan sin usar. |
-| Logo de la barra | `public/img/logo-speakeasy-header.webp` | Generado desde `design/originales/`. |
+| Logo de la barra | `public/img/logo-speakeasy-header.webp` | Generado desde `design/originales/`. Sin usar desde que el banner del lanzamiento reemplazó la barra superior. |
 | Favicon | `public/FAVICON.png`, `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png` | |
 | Miniaturas y PDF | Blob de Vercel | Se configuran por material en `config/materiales.json`. |
 

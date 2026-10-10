@@ -1,0 +1,160 @@
+---
+/**
+ * Banner del lanzamiento del programa: franja pegada arriba con el botón de
+ * compra y una cuenta atrás hasta el cierre del carrito. Es el mismo banner de
+ * la página de venta (GoHighLevel), pasado a Tailwind.
+ *
+ * Al llegar a cero solo desaparece la cuenta atrás: el texto y el botón siguen.
+ */
+
+interface Props {
+  /** Instante único del render, compartido con las tarjetas. */
+  ahora: Date;
+}
+
+/**
+ * La medianoche en que el carrito DEJA de estar abierto: el 12/10 a las
+ * 11:59:59 p. m. sigue activo y a las 12:00:00 a. m. ya no. Con offset, igual
+ * que `fechaClase` en materiales.json.
+ */
+const CIERRE = '2026-10-13T00:00:00-05:00';
+const URL_COMPRA = 'https://pay.hotmart.com/M104731124T?off=ei45hqhh&checkoutMode=10';
+/** Cerebro con el carrito: PNG transparente de 737 × 300. */
+const IMAGEN =
+  'https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148669590/images/607340b-d43-dfb0-da3c-73cb7e788635_aperdura_carrito_1.png';
+
+const { ahora } = Astro.props;
+const cierre = new Date(CIERRE);
+const abierto = ahora.getTime() < cierre.getTime();
+
+const unidades = [
+  ['d', 'días'],
+  ['h', 'horas'],
+  ['m', 'min'],
+  ['s', 'seg'],
+] as const;
+---
+
+<aside class="banner-lanzamiento sticky top-0 z-50 w-full overflow-hidden" aria-label="Lanzamiento del programa">
+  <div
+    class="mx-auto flex max-w-[1248px] flex-wrap items-center justify-center gap-2.5 px-4 pt-3 pb-3.5 md:h-[114px] md:flex-nowrap md:gap-5 md:py-0 min-[1100px]:gap-7 min-[1100px]:px-6"
+  >
+    <p
+      class="flex-[1_0_100%] text-center text-[16px] leading-[22px] font-extrabold tracking-[-0.2px] text-[#381f59] uppercase md:flex-initial md:text-left md:text-[18px] md:tracking-[-0.3px] md:whitespace-nowrap min-[1100px]:text-[22px] min-[1100px]:leading-[26px]"
+    >
+      <span class="block">¡Acabo de lanzar mi programa</span>
+      <span class="block">para aprender inglés!</span>
+    </p>
+
+    <a
+      href={URL_COMPRA}
+      class="flex h-9 flex-none items-center justify-center rounded-full bg-rosa px-4 text-[12px] leading-none font-extrabold tracking-[0.3px] whitespace-nowrap text-white uppercase shadow-[0_6px_16px_rgba(255,50,125,0.35)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-px hover:shadow-[0_10px_22px_rgba(255,50,125,0.45)] focus-visible:ring-2 focus-visible:ring-morado-600 focus-visible:ring-offset-2 focus-visible:outline-none md:h-[38px] md:px-[22px] md:text-[13px]"
+    >
+      Compra ahora
+    </a>
+
+    {
+      abierto && (
+        <div
+          class="cuenta-atras flex flex-none items-center gap-[5px] text-center md:gap-2 min-[1100px]:gap-2.5"
+          role="timer"
+          data-cierre={cierre.getTime()}
+        >
+          {unidades.map(([clave, etiqueta]) => (
+            <div class="flex size-10 flex-col items-center justify-center gap-px rounded-[7px] bg-white px-0.5 py-1 shadow-[0_4px_12px_rgba(65,39,107,0.08)] md:h-[46px] md:w-12 md:rounded-lg md:px-1 md:py-1.5 min-[1100px]:h-[50px] min-[1100px]:w-[53px]">
+              <span
+                class="block w-full text-[17px] leading-[19px] font-bold text-rosa tabular-nums md:text-[20px] md:leading-[22px] min-[1100px]:text-[22px] min-[1100px]:leading-6"
+                data-unidad={clave}
+              >
+                00
+              </span>
+              <span class="block w-full text-[10px] leading-[12px] text-[#ab5a7d] md:text-[11px] md:leading-[13px]">
+                {etiqueta}
+              </span>
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    <!--
+      Solo cabe desde 1100 px. Con `loading="lazy"` el navegador no la descarga
+      mientras está oculta, así que en el móvil no gasta datos.
+    -->
+    <img
+      src={IMAGEN}
+      alt=""
+      width="737"
+      height="300"
+      loading="lazy"
+      decoding="async"
+      class="pointer-events-none ml-2.5 hidden h-[114px] w-auto max-w-none flex-none min-[1100px]:block"
+    />
+  </div>
+</aside>
+
+<script>
+  /**
+   * Cuenta atrás del banner. El cierre es una fecha fija con la hora de
+   * Colombia, así que todos los visitantes llegan a cero en el mismo instante,
+   * estén donde estén, y recargar la página no la reinicia.
+   *
+   * A diferencia de la página de venta, no corrige el reloj del visitante con
+   * la hora del servidor: aquí esa consulta saltaría la caché del CDN y
+   * dispararía una ejecución por visita.
+   *
+   * Para probar el cierre sin esperar: ?simular=2026-10-12T23:59:50-05:00
+   */
+  const cuenta = document.querySelector<HTMLElement>('[data-cierre]');
+  const cierre = Number(cuenta?.dataset.cierre);
+
+  if (cuenta && Number.isFinite(cierre)) {
+    const simulada = Date.parse(new URLSearchParams(location.search).get('simular') ?? '');
+    const desfase = Number.isNaN(simulada) ? 0 : simulada - Date.now();
+
+    const poner = (unidad: string, valor: number) => {
+      const casilla = cuenta.querySelector(`[data-unidad="${unidad}"]`);
+      const texto = String(valor).padStart(2, '0');
+      if (casilla && casilla.textContent !== texto) casilla.textContent = texto;
+    };
+
+    /** Devuelve `false` cuando ya cerró, para que el ciclo se detenga. */
+    const pintar = () => {
+      const resta = cierre - (Date.now() + desfase);
+      if (resta <= 0) {
+        cuenta.remove();
+        return false;
+      }
+
+      // Hacia arriba: con medio segundo restante muestra 00 00 00 01, nunca
+      // todo en cero estando abierto.
+      const segundos = Math.ceil(resta / 1000);
+      const d = Math.floor(segundos / 86400);
+      const h = Math.floor((segundos % 86400) / 3600);
+      const m = Math.floor((segundos % 3600) / 60);
+      poner('d', d);
+      poner('h', h);
+      poner('m', m);
+      poner('s', segundos % 60);
+
+      // A los lectores de pantalla les basta la precisión de minutos.
+      const etiqueta = `Termina en ${d} días, ${h} horas y ${m} minutos`;
+      if (cuenta.getAttribute('aria-label') !== etiqueta) cuenta.setAttribute('aria-label', etiqueta);
+      cuenta.dataset.lista = '';
+      return true;
+    };
+
+    // Se repinta justo al cambiar cada segundo: un `setInterval` se va
+    // desfasando y a veces se salta un número.
+    const ciclo = () => {
+      if (pintar()) setTimeout(ciclo, 1000 - ((Date.now() + desfase) % 1000) + 15);
+    };
+    ciclo();
+
+    // Al volver a la pestaña (o al desbloquear el celular) se recalcula al instante.
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') pintar();
+    });
+    window.addEventListener('pageshow', pintar);
+  }
+</script>
