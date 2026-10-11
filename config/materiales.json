@@ -49,8 +49,8 @@
     "titulo": "CLASE 06 - ESTRUCTURACIÓN DEL APRENDIZAJE BILINGÜE",
     "descripcion": "Descarga el material de la clase de hoy aquí.",
     "miniaturaUrl": "https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148669590/images/6dba2c-d422-a56d-d1b8-3164dbeb61e3_MINIATURAYTCLASE6.jpg",
-    "materialUrl": "/material/material6.pdf",
+    "materialUrl": "https://kajabi-storefronts-production.s3.amazonaws.com/file-uploads/sites/2148669590/files/8e87d16-131-86e8-47fd-a70f534b382c_06_CLASE_RUTINA_-_PRESENT_SIMPLE.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI4TIKYMSB4PQMFBA%2F20261011%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261011T002454Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=dfee96d78508d34268efc8956d8fd3615acc2b39f7702010c0471894aef33598",
     "fechaClase": "2026-10-10T19:00:00-05:00",
-    "disponible": false
+    "disponible": true
   }
 ]
